@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        const password = encodeURIComponent('ram@20042004');
-        const uri = `mongodb+srv://abhishek_rajput:${password}@cluster0.kvalswb.mongodb.net/voting_system?retryWrites=true&w=majority&appName=Cluster0`;
+        const uri = process.env.MONGODB_URI;
         const conn = await mongoose.connect(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true

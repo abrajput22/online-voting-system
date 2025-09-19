@@ -6,51 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Voting System</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="/" class="nav-brand">Online Voting System</a>
-        <div class="nav-links">
-            <% if (user) { %>
-                <% if (user.role==='admin' ) { %>
-                    <a href="/admin" class="nav-link">Admin Dashboard</a>
+        <div class="container">
+            <a href="/" class="nav-brand">🗳️ VoteSecure</a>
+            <div class="nav-links">
+                <% if (user) { %>
+                    <% if (user.role === 'admin') { %>
+                        <a href="/admin" class="nav-link">Dashboard</a>
                     <% } else { %>
-                        <a href="/voting" class="nav-link">Vote</a>
-                        <% } %>
-                            <a href="/profile" class="nav-link">Profile</a>
-                            <a href="/auth/logout" class="nav-link">Logout</a>
-                            <% } else { %>
-                                <a href="/auth/login" class="nav-link">Login</a>
-                                <a href="/auth/register" class="nav-link">Register</a>
-                                <% } %>
+                        <a href="/voting" class="nav-link">Elections</a>
+                    <% } %>
+                    <a href="/profile" class="nav-link">Profile</a>
+                    <a href="/auth/logout" class="btn btn-outline">Logout</a>
+                <% } else { %>
+                    <a href="/auth/login" class="nav-link">Login</a>
+                    <a href="/auth/register" class="btn btn-primary">Get Started</a>
+                <% } %>
+            </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="hero">
-            <h1>Welcome to Online Voting System</h1>
-            <p>A secure and transparent way to conduct elections</p>
-
-            <% if (user) { %>
-                <% if (user.role==='admin' ) { %>
-                    <a href="/admin" class="btn">Go to Admin Dashboard</a>
-                    <% } else { %>
-                        <a href="/voting" class="btn">Go to Voting Dashboard</a>
-                        <% } %>
-                            <% } else { %>
-                                <div class="auth-buttons">
-                                    <a href="/auth/login" class="btn">Login</a>
-                                    <a href="/auth/register" class="btn">Register</a>
-                                </div>
-                                <% } %>
-        </div>
-
-        <% if (typeof error !=='undefined' ) { %>
-            <div class="error-message">
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="container">
+            <div class="error-message fade-in">
                 <%= error %>
             </div>
-            <% } %>
+        </div>
+    <% } %>
+
+    <div class="hero fade-in">
+        <div class="container">
+            <h1>Secure Digital Voting</h1>
+            <p>Experience democracy in the digital age with our secure, transparent, and user-friendly voting platform</p>
+            
+            <div class="hero-buttons">
+                <% if (user) { %>
+                    <% if (user.role === 'admin') { %>
+                        <a href="/admin" class="btn btn-primary">📊 Admin Dashboard</a>
+                    <% } else { %>
+                        <a href="/voting" class="btn btn-primary">🗳️ View Elections</a>
+                    <% } %>
+                    <a href="/profile" class="btn btn-outline">👤 My Profile</a>
+                <% } else { %>
+                    <a href="/auth/register" class="btn btn-primary">🚀 Get Started</a>
+                    <a href="/auth/login" class="btn btn-outline">🔐 Login</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid fade-in">
+            <div class="stat-card">
+                <h3>Secure</h3>
+                <p>🔒</p>
+                <small>End-to-end encryption</small>
+            </div>
+            <div class="stat-card">
+                <h3>Transparent</h3>
+                <p>👁️</p>
+                <small>Real-time results</small>
+            </div>
+            <div class="stat-card">
+                <h3>Accessible</h3>
+                <p>📱</p>
+                <small>Vote from anywhere</small>
+            </div>
+            <div class="stat-card">
+                <h3>Reliable</h3>
+                <p>✅</p>
+                <small>99.9% uptime</small>
+            </div>
+        </div>
     </div>
 
     <script src="/js/script.js"></script>

@@ -36,7 +36,7 @@ A secure, modern web-based voting platform built with Node.js, MongoDB, and Expr
 **Production**: [https://online-voting-system-nom5.onrender.com](https://online-voting-system-nom5.onrender.com)
 
 ### Demo Credentials
-- **Admin**: `abhishekrajput20252025@gmail.com` / `ram@20042004`
+- **Admin**: `ab@gmail.com` / `password`
 - **Voter**: Register with Google OAuth or create new account
 
 ## 🛠️ Tech Stack

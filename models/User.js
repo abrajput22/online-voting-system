@@ -112,8 +112,8 @@ userSchema.statics.generateVoterId = async function () {
 // Static method to initialize admin user
 userSchema.statics.initializeAdmin = async function () {
     try {
-        const adminEmail = 'abhishekrajput20252025@gmail.com';
-        const adminPassword = 'ram@20042004';
+        const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
+        const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
 
         let admin = await this.findOne({ email: adminEmail });
 
@@ -126,7 +126,7 @@ userSchema.statics.initializeAdmin = async function () {
                 hasPassword: true
             });
             await admin.save();
-            console.log('Admin user created successfully');
+            console.log('Admin user created successfully with email:', adminEmail);
         } else {
             console.log('Admin user already exists');
         }
